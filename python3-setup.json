@@ -1,0 +1,40 @@
+{
+    "name": "python3-modules",
+    "buildsystem": "simple",
+    "build-commands": [],
+    "modules": [
+        {
+            "name": "python3-rectangle-packer",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"rectangle-packer>=2.0.1\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/d6/b9/9e55447358cb7f6ee2eedc9c1d124850147ca9937489f892fd0e4affb800/rectangle-packer-2.0.1.tar.gz",
+                    "sha256": "dd8e70184d2af8a195d568e0c2c3cc197f0c94c2a477475411e5ea978c67b27d"
+                }
+            ]
+        },
+        {
+            "name": "python3-exif",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"exif\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/be/0c/eae122d78b0f8d936cd778fdda4a23dc49f58de75c8dada9bfae7e2f00a9/plum-py-0.7.0.tar.gz",
+                    "sha256": "6d0bdf7aefa10e519d2902827dee2f96a554e55f04064c978197714b26ca1ab9"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/4d/cd/c19127c1ad85962948d6d32930a85d78f971da68dad620b8a618f33bc72b/exif-1.3.2.tar.gz",
+                    "sha256": "7a93ced12bca131b04c7e92c13a16a40685b9eb83414f9ed479d38df1c686633"
+                }
+            ]
+        }
+    ]
+}

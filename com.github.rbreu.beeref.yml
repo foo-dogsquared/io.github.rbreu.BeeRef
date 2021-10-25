@@ -1,0 +1,38 @@
+app-id: com.github.rbreu.Beeref
+runtime: org.kde.Platform
+runtime-version: "5.15"
+sdk: org.kde.Sdk
+command: beeref
+finish-args:
+  - --filesystem=home
+  - --socket=wayland
+  - --socket=fallback-x11
+
+modules:
+  - name: python3-pyQt6
+    buildsystem: simple
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/58/59/b4fa8516c19fb7a5068e0dd2107cc97a98edc533626891884511b1424011/PyQt6-6.2.0-cp36-abi3-manylinux_2_28_x86_64.whl
+        sha256: c43f4bb7dbe58b262b88da137de54a140091a5273b3333406a76507551c34321
+      - type: file
+        url: https://files.pythonhosted.org/packages/f5/d0/991abda91d85f90b0443af9bb19c90a6ace3b1b7f4232cb314a5e6229498/PyQt6_sip-13.1.0-cp38-cp38-manylinux1_x86_64.whl
+        sha256: c6d017380c0a3e8ef94f6eecc119a056ec3e6f71c9c5b7957a1c2dc51007901f
+      - type: file
+        url: https://files.pythonhosted.org/packages/c8/31/13f93dc3f24555f70fe9fa657fc9f0a70d5a54755caa142f67d7ed0f2637/PyQt6_Qt6-6.2.0-py3-none-manylinux_2_28_x86_64.whl
+        sha256: c0d4c1b1b7bd0c9f21a6284d6aa53c041cb36dc464acb403cbe1bc8845090d30
+    build-commands:
+      - pip3 install PyQt*.whl --target=/app/lib/python3.8/site-packages
+
+  - python3-setup.json
+
+  - name: beeref
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app --no-deps .
+    sources:
+      - type: git
+        branch: main
+        commit: cf55d1a5e304da707f2cc9a9ca793ee24503a0bc
+        url: https://github.com/rbreu/beeref.git
+        sha256: 00000000000000asd0asd0asd0000
