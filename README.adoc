@@ -1,0 +1,42 @@
+= io.github.rbreu.Beeref
+:toc:
+
+This is link:https://github.com/rbreu/beeref[Beeref] packaged as a Flatpak application.
+Bear in mind this is not affiliated with the developer in any way.
+
+
+
+
+== Installation
+
+CAUTION: Only do the following if you have an adventurous sense of installing applications.
+It is recommended to install this when accepted through Flathub or something similar.
+
+This repo should only contain the Flatpak manifest of the application.
+Being a Flatpak manifest, you need Flatpak installed of course. :)
+Also, you need `flatpak-builder` installed and run the following.
+
+[source, shell]
+----
+flatpak-builder --user --install build/ com.github.rbreu.Beeref.yml
+----
+
+
+
+
+== Setting up for development
+
+For future contributors, you need Flatpak and `flatpak-builder` installed.
+
+The gist of the process mostly involves following the project development and updating the dependencies.
+Updating the dependencies is a bit of a pain to explain so I made sure the manifest is well-commented.
+Give the link:./io.github.rbreu.BeeRef.yml[manifest] a peek, yes?
+
+The gist of the process will usually looks like the following list:
+
+- Follow the project.
+- Look into dependencies.
+- Update dependencies if there are any changes to it.
+- Generate a manifest with the link:https://github.com/flatpak/flatpak-builder-tools[flatpak-builder-tools] from the dependency list (except Qt-related packages).
+- Update app metadata (e.g., icons, `.desktop` file).
+
