@@ -54,3 +54,5 @@ modules:
         url: https://github.com/rbreu/beeref.git
         branch: main
         commit: cf55d1a5e304da707f2cc9a9ca793ee24503a0bc
+      - type: patch
+        path: update-desktop-file.patch

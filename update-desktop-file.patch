@@ -1,0 +1,19 @@
+diff --git a/beeref.desktop b/beeref.desktop
+index 74d9362..5a57eda 100644
+--- a/beeref.desktop
++++ b/beeref.desktop
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+ Name=BeeRef
+-Comment=BeeRef 0.3.0-dev
++GenericName=Reference image viewer
++Comment=Arrange reference images and view them while you create
+ Terminal=false
+-Exec=/home/yourname/path/to/BeeRef-0.3.0-dev-linux
++Exec=beeref
+ Type=Application
+-Icon=/home/yourname/path/to/logo.png
++Icon=com.github.rbreu.Beeref
+ Name[en_US]=BeeRef
+ 
+ MimeType=application/x-beeref;
