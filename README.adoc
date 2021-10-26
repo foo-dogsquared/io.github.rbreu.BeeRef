@@ -45,5 +45,14 @@ The gist of the process will usually looks like the following list:
 - Generate a manifest with the link:https://github.com/flatpak/flatpak-builder-tools[flatpak-builder-tools] from the dependency list (except Qt-related packages).
 - Update app metadata (e.g., icons, `.desktop` file).
 
-One of the biggest blocker as of 2021-10-25 is building the PyQt bindings.
+There are also some things to keep an eye on in my version of the manifest.
+
+* One of the biggest blocker as of 2021-10-25 is building the PyQt bindings.
 `./flatpak-builder-tools/pip/flatpak-pip-generator` cannot generate a manifest from `PyQt6` because one of the dependencies (`PyQt6-Qt6`) cannot be built from source which is the preference of Flathub overall.
+`PyQt6-Qt6` contains the compiled library objects of Qt 6.
+
+* As of 2021-10-26, the KDE runtime from Flathub is using Qt 5.
+Because of that, we're compiling our own build of Qt 6.
+It should be similar to link:https://pypi.org/project/PyQt6-Qt6/[PyQt6-Qt6 Pip module] which contains the compiled library objects of most Qt modules.
+This project is using Qt 6 and it is important to keep an eye whether the runtime has updated to the appropriate Qt version.
+So far, only the Qt base modules are required to work but it'll change as the project develops.
