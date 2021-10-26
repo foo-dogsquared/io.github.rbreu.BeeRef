@@ -30,5 +30,8 @@
             "url": "https://files.pythonhosted.org/packages/63/9b/e7cd8c57cd38df3bf8e95750257f10703dcab15ef9050c0dc03259746e87/PyQt-builder-1.12.1.tar.gz",
             "sha256": "9a71e9cac134702467bd93ed9c7a5a47dc4386d93501bdcafb14cd08b3041d40"
         }
+    ],
+    "cleanup": [
+        "/bin"
     ]
 }

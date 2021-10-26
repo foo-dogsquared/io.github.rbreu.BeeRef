@@ -13,7 +13,7 @@ index 74d9362..5a57eda 100644
 +Exec=beeref
  Type=Application
 -Icon=/home/yourname/path/to/logo.png
-+Icon=com.github.rbreu.Beeref
++Icon=beeref
  Name[en_US]=BeeRef
- 
+
  MimeType=application/x-beeref;

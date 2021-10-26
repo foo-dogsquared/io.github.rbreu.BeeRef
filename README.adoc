@@ -23,7 +23,7 @@ Also, you need `flatpak-builder` installed and run the following.
 
 [source, shell]
 ----
-flatpak-builder --user --install build/ com.github.rbreu.Beeref.yml
+flatpak-builder --user --install build/ io.github.rbreu.BeeRef.yml
 ----
 
 

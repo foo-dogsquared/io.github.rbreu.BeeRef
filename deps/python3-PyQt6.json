@@ -19,9 +19,6 @@
             "path": "pyqt6-build",
             "dest-filename": "build"
         }
-    ],
-    "cleanup": [
-        "/bin"
     ]
 }
 

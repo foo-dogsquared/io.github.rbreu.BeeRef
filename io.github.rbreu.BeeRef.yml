@@ -1,7 +1,7 @@
 app-id: io.github.rbreu.BeeRef
-runtime: org.kde.Platform
-runtime-version: "5.15"
-sdk: org.kde.Sdk
+runtime: org.freedesktop.Platform
+runtime-version: "20.08"
+sdk: org.freedesktop.Sdk
 command: beeref
 finish-args:
   - --filesystem=home
@@ -9,19 +9,32 @@ finish-args:
   - --socket=fallback-x11
 rename-desktop-file: beeref.desktop
 rename-icon: logo
+cleanup:
+  - /lib/debug
 
 modules:
+  # TODO: If KDE runtime is updated to Qt 6 then remove this.
   - name: qt-base
     buildsystem: cmake-ninja
-    builddir: true
     config-opts:
       - -DQT_BUILD_EXAMPLES=OFF
       - -DQT_BUILD_TESTS=OFF
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: git://code.qt.io/qt/qtbase.git
         tag: v6.2.0
         commit: cc60cf83db6bbf9775b1f7747a48d6b7eb24e585
+    # Modeled after PyQt6-Qt6 installation files which only includes the shared library objects so I assume it is safe to remove the rest.
+    cleanup:
+      - /lib/cmake
+      - /lib/metatypes
+      - /libexec
+      - /mkspecs
+      - /modules
+      - /include
+      - /doc
+      - /bin
 
   # The following shouldn't be manually edited.
   # It is generated from the `flatpak-builder-tools` (https://github.com/flatpak/flatpak-builder-tools).
@@ -36,7 +49,6 @@ modules:
   - ./deps/python3-PyQt6-sip.json
   - ./deps/python3-PyQt-builder.json
   - ./deps/python3-PyQt6.json
-  - ./deps/python3-pyinstaller.json
 
   # The application itself.
   # It seems to be a convention that the very project should be the last module.
