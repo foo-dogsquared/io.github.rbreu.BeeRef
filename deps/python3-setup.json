@@ -1,5 +1,5 @@
 {
-    "name": "python3-modules",
+    "name": "python3-setup",
     "buildsystem": "simple",
     "build-commands": [],
     "modules": [

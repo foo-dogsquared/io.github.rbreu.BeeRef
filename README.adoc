@@ -2,7 +2,12 @@
 :toc:
 
 This is link:https://github.com/rbreu/beeref[Beeref] packaged as a Flatpak application.
-Bear in mind this is not affiliated with the developer in any way.
+
+WARNING: Bear in mind this is not affiliated with the developer in any way.
+Take it as an unofficial way to install BeeRef in Flatpak.
+In the future and if time allows, I'll discuss with the app developer how to manage distribution through Flathub (which is explicitly stated for app developers to control the distribution of their own apps).
+I also just want to take a look how Flatpak are packaged.
+You've been warned.
 
 
 
@@ -40,3 +45,5 @@ The gist of the process will usually looks like the following list:
 - Generate a manifest with the link:https://github.com/flatpak/flatpak-builder-tools[flatpak-builder-tools] from the dependency list (except Qt-related packages).
 - Update app metadata (e.g., icons, `.desktop` file).
 
+One of the biggest blocker as of 2021-10-25 is building the PyQt bindings.
+`./flatpak-builder-tools/pip/flatpak-pip-generator` cannot generate a manifest from `PyQt6` because one of the dependencies (`PyQt6-Qt6`) cannot be built from source which is the preference of Flathub overall.

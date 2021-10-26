@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 5ce2f31..b2ca047 100644
+--- a/setup.py
++++ b/setup.py
+@@ -10,7 +10,6 @@ setup(
+     description='A simple reference image viewer',
+     install_requires=[
+         'pyQt6>=6.2.0',
+-        'pyQt6-Qt6>=6.2.0',
+         'rectangle-packer>=2.0.1',
+         'exif',
+     ],

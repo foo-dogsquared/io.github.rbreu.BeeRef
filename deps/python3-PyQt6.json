@@ -1,0 +1,27 @@
+{
+    "name": "python3-PyQt6",
+    "buildsystem": "simple",
+    "build-commands": [
+        ". ${FLATPAK_BUILDER_BUILDDIR}/build"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://files.pythonhosted.org/packages/63/14/342909751d8cb6931ca1548a9834f5f581c69c2bc5836e65a8aeee9f1bb7/PyQt6-6.2.0.tar.gz",
+            "sha256": "142ce7fa574d7ebb13fb0a2ebd18c86087c35829f786c094a71a0749155d8fee",
+            "x-checker-data": {
+                "type": "pypi",
+                "name": "PyQt6"
+            }
+        },
+        {
+            "type": "file",
+            "path": "pyqt6-build",
+            "dest-filename": "build"
+        }
+    ],
+    "cleanup": [
+        "/bin"
+    ]
+}
+
