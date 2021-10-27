@@ -14,6 +14,8 @@ cleanup:
 
 modules:
   # TODO: If KDE runtime is updated to Qt 6 then remove this.
+  # Modeled after PyQt6-Qt6 installation files which only includes the shared library objects so I assume it is safe to remove the rest.
+  # So far only the base modules work but expect to add more modules as the project develops.
   - name: qt-base
     buildsystem: cmake-ninja
     config-opts:
@@ -25,7 +27,6 @@ modules:
         url: git://code.qt.io/qt/qtbase.git
         tag: v6.2.0
         commit: cc60cf83db6bbf9775b1f7747a48d6b7eb24e585
-    # Modeled after PyQt6-Qt6 installation files which only includes the shared library objects so I assume it is safe to remove the rest.
     cleanup:
       - /lib/cmake
       - /lib/metatypes
@@ -41,23 +42,22 @@ modules:
   # You should be able to generate one by running the following command:
   #
   # > flatpak-builder-tools/pip/flatpak-pip-generator -o python3-setup.json <PACKAGES_IN_setup.py>...
-  #
-  # Note that PyQt and its related packages are not included because they are a bit of a pain to include.
-  # See the related issue: https://github.com/flatpak/flatpak-builder-tools/issues/26
   - ./deps/python3-setup.json
   - ./deps/python3-sip.json
   - ./deps/python3-PyQt6-sip.json
   - ./deps/python3-PyQt-builder.json
+
+  # On the other hand, this is manually edited.
+  # It is not included because one of the dependencies doesn't have a source to be able to build.
+  # See the related issue: https://github.com/flatpak/flatpak-builder-tools/issues/26
   - ./deps/python3-PyQt6.json
 
-  # The application itself.
-  # It seems to be a convention that the very project should be the last module.
   - name: beeref
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --prefix=/app --no-deps .
-      - install -Dm644 beeref.desktop -t /app/share/applications/
-      - install -Dm644 beeref/assets/logo.svg -t /app/share/icons/hicolor/scalable/apps/
+      - install -Dm644 beeref.desktop -t ${FLATPAK_DEST}/share/applications/
+      - install -Dm644 beeref/assets/logo.svg -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/
     sources:
       - type: git
         url: https://github.com/rbreu/beeref.git
