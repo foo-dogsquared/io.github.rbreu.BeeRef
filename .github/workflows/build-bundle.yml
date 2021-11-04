@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+name: Build bundle
+jobs:
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-40
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v2
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      with:
+        bundle: beeref.flatpak
+        manifest-path: io.github.rbreu.BeeRef.yml
+        cache-key: flatpak-builder-${{ github.sha }}
+    - name: Release bundle
+      uses: marvinpinto/action-automatic-releases@v1.2.1
+      with:
+        prerelease: true
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        files: "beeref.flatpak"
+
