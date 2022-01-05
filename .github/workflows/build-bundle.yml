@@ -20,6 +20,7 @@ jobs:
     - name: Release bundle
       uses: marvinpinto/action-automatic-releases@v1.2.1
       with:
+        automatic_release_tag: "latest"
         prerelease: true
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         files: "beeref.flatpak"
